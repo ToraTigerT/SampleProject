@@ -9,7 +9,7 @@
 </head>
 <body>
     <header>
-        <div class="site-title">ミニブログ</div>
+        <div class="site-title"><a href ="{{route('articles.index')}}">ミニブログ</a></div>
     </header>
     <main class="container">
         @yield('content')
