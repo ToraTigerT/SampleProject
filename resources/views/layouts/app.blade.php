@@ -10,6 +10,12 @@
 <body>
     <header>
         <div class="site-title"><a href ="{{route('articles.index')}}">ミニブログ</a></div>
+        @if(Auth::check())
+        <div>ログインなうですYO！{{Auth::user()->name}}がログインしています。<div>
+        @else
+        <div>NOTろぐいん</div>
+        @endif
+        <div><a href="{{route('login')}}">マイページ</a><div>
     </header>
     <main class="container">
         @yield('content')
