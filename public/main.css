@@ -21,7 +21,12 @@ header {
     margin-bottom: 10px;
     font-size: 1.2rem;
     font-weight: bold;
+    text-align: center;
 }
+.write-article {
+    text-align: right;
+}
+
 footer {
     padding: 20px;
     text-align: center;
