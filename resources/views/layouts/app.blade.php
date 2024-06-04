@@ -10,12 +10,23 @@
 <body>
     <header>
         <div class="site-title"><a href ="{{route('articles.index')}}">ミニブログ</a></div>
-        @if(Auth::check())
-        <div>ログインなうですYO！{{Auth::user()->name}}がログインしています。<div>
-        @else
-        <div>NOTろぐいん</div>
-        @endif
-        <div><a href="{{route('login')}}">マイページ</a><div>
+        <nav class="tab">
+            <ul>
+                @if (Auth::check())
+                <li><a class="tab-item{{ Request::is('home') ? ' active' : ''}}" href="{{ route('home') }}">マイページ</a></li>
+                <li><a class="tab-item{{ Request::is('articles') ? ' active' : ''}}" href="{{ route('articles.index') }}">記事検索</a></li>                
+                <li>
+                    <form on-submit="return confirm('ログアウトしますか？')" action="{{ route('logout') }}" method="post">
+                        @csrf
+                        <button type="submit">ログアウト</button>
+                    </form>
+                </li>
+                @else 
+                <li><a href="{{ route('login') }}">ログイン</a></li>
+                <li><a href="{{ route('register') }}">会員登録</a></li>
+                @endif
+            </ul>
+        </nav>
     </header>
     <main class="container">
         @yield('content')
